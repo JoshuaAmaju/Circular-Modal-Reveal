@@ -81,7 +81,6 @@ function staggerIn() {
   contentInfoChild.forEach((childItem, i) => {
     childItem.classList.add("in");
     childItem.style.transitionDelay = transitionDelay + "s";
-
     // Increment transition delay by .3s
     transitionDelay += 0.3;
   });
