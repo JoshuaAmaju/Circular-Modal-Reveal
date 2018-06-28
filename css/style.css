@@ -1,0 +1,139 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #ebebeb;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+}
+
+.container .grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2em;
+}
+
+.grid .grid-item {
+  background: #fff;
+  padding: 1em;
+  cursor: pointer;
+  text-align: center;
+  transition: all .25s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.grid .grid-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px -16px rgba(0, 0, 0, 0.5);
+}
+
+.grid .grid-item.out {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.grid .grid-item__1 {
+  grid-row: span 2;
+}
+
+.circular-reveal__overlay {
+  background: #333;
+  width: 150px;
+  height: 150px;
+  position: fixed;
+  bottom: -20%;
+  right: -20%;
+  z-index: 3;
+  border-radius: 100%;
+  visibility: hidden;
+  transition: all .5s ease;
+}
+
+.circular-reveal__overlay.open {
+  transform: scale(50);
+  visibility: visible;
+}
+
+.content-info {
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  left: 0;
+  top: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.content-info.open {
+  transform: scale(1);
+  z-index: 5;
+}
+
+.content-info ul {
+  width: 60%;
+  list-style: none;
+  color: currentColor;
+  margin: 0;
+  padding: 0;
+  /*color: #000;*/
+  position: relative;
+  z-index: 8;
+}
+
+.content-info ul li {
+  margin: 3em 0;
+  transform: translateY(600px);
+  transition: all .75s ease;
+  font-size: 1.2em;
+}
+
+.content-info ul li.in {
+  transform: translateY(0);
+}
+
+.close {
+  position: fixed;
+  z-index: 6;
+  right: -5%;
+  top: 2%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: .5em;
+  display: block;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all .25s cubic-bezier(0.25, 0.1, 0.04, 1.35) .5s;
+  cursor: pointer;
+}
+
+.close > * {
+  display: block;
+  width: 50%;
+  height: 2px;
+  background: #000;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 100%;
+}
+
+.close .x-1 {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.close .x-2 {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
